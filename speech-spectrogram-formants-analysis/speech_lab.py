@@ -63,6 +63,20 @@ def task1_plot_and_analyze():
         print("-" * 30)
 
 
+def extract_middle_frame(audio, sr):
+    frame_size = int(0.030 * sr)
+
+    # Hint 1: Find the middle sample index.
+    middle = len(audio) // 2
+
+    # Hint 2: Start half a frame before the middle.
+    start = middle - (frame_size // 2)
+
+    # Hint 3: Slice the audio array.
+    frame = audio[start : start + frame_size]
+
+    return frame
+
 
 def task2_fft():
     pass
