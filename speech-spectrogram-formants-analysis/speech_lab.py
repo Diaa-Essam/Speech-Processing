@@ -77,9 +77,39 @@ def extract_middle_frame(audio, sr):
 
     return frame
 
+def load_middle_frame():
+    audio, sr = sf.read(os.path.join("audio", "start_1.wav"))
+
+    frame = extract_middle_frame(audio, sr)
+
+    return frame, sr
+
+def compute_fft_magnitude(frame):
+    fft_values = np.fft.rfft(frame) # gives us an array of complex numbers
+    magnitude = np.abs(fft_values)
+    return magnitude
+# 15. Generate Frequency Bins
+def compute_frequencies(frame, sr):
+    frequencies = np.fft.rfftfreq(
+        len(frame),
+        d=1 /sr
+    )
+    return frequencies
 
 def task2_fft():
-    pass
+    frame, sr = load_middle_frame()
+
+    magnitude = compute_fft_magnitude(frame)
+    frequencies = compute_frequencies(frame, sr)
+
+    plt.figure(figsize=(10, 4))
+    plt.plot(frequencies, magnitude)
+    plt.xlim(0, 5000)
+    plt.xlabel("Frequency (Hz)")
+    plt.ylabel("Magnitude")
+    plt.title("Frequency Spectrum")
+    plt.savefig(os.path.join(PLOTS_DIR, "task2_spectrum.png"))
+    plt.close()
 
 def task3_spectrograms():
     pass
@@ -92,4 +122,4 @@ def task5_endpoint():
 
 if __name__ == "__main__":
     # We will uncomment these as we go
-    task1_plot_and_analyze()
+    task2_fft()
