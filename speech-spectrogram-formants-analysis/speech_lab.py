@@ -111,6 +111,10 @@ def task2_fft():
     plt.savefig(os.path.join(PLOTS_DIR, "task2_spectrum.png"))
     plt.close()
 
+def magnitude_to_db(magnitude):
+    magnitude_db = 20 * np.log10(magnitude + 1e-10)
+    return magnitude_db
+
 def task3_spectrograms():
     pass
 
