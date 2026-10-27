@@ -115,6 +115,11 @@ def magnitude_to_db(magnitude):
     magnitude_db = 20 * np.log10(magnitude + 1e-10)
     return magnitude_db
 
+
+def detect_peaks(magnitude):
+    peaks, properties = find_peaks(magnitude)
+    return peaks
+
 def task3_spectrograms():
     pass
 
