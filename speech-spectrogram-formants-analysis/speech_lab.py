@@ -120,6 +120,20 @@ def detect_peaks(magnitude):
     peaks, properties = find_peaks(magnitude)
     return peaks
 
+def plot_spectrum_db(frequencies, magnitude_db):
+    plt.figure(figsize=(10, 4))
+
+    # Your code here
+    plt.plot(frequencies, magnitude_db)
+    plt.xlim(0, 5000)
+    plt.xlabel('Frequency (Hz)')
+    plt.ylabel('Magnitude (dB)')
+    plt.title('Frequency Spectrum (dB)')
+
+    plt.savefig(os.path.join(PLOTS_DIR, "task2_spectrum_db.png"))
+    plt.close()
+
+
 def task3_spectrograms():
     pass
 
