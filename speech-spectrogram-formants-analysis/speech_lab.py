@@ -44,7 +44,7 @@ def task1_record():
 
 def task1_plot_and_analyze():
     for i in range(1, 4):
-        filename = os.path.join("audio", f"start_{i}.wav")
+        filename = os.path.join(AUDIO_DIR, f"start_{i}.wav")
         audio, sr = sf.read(filename) # Loadeing Audio and Sampling rate
         time = np.arange(len(audio)) / sr
 
@@ -78,7 +78,7 @@ def extract_middle_frame(audio, sr):
     return frame
 
 def load_middle_frame():
-    audio, sr = sf.read(os.path.join("audio", "start_1.wav"))
+    audio, sr = sf.read(os.path.join(AUDIO_DIR, "start_1.wav"))
 
     frame = extract_middle_frame(audio, sr)
 
